@@ -187,26 +187,40 @@ http://192.168.1.50:5000/api-docs
 
 Dùng khi không thuê VPS nhưng muốn bạn bè/lớp truy cập từ xa (4G, mạng khác).
 
-### Điều kiện
+### Điều kiện (bắt buộc theo thứ tự)
 
-- API đang chạy tại `localhost:5000` (Docker hoặc local).
-- Đã cài ngrok: https://ngrok.com/download
+1. **API đã chạy** và http://localhost:5000/health trả `{"success":true,...}`.
+2. Đã cài ngrok: https://ngrok.com/download (hoặc `winget install Ngrok.Ngrok`).
+3. Ngrok agent **≥ 3.20** (bản cũ sẽ báo lỗi khi đăng nhập).
 
 ### Các bước
 
 ```powershell
-# Lần đầu: đăng ký ngrok, lấy authtoken
+# Lần đầu: đăng ký ngrok, lấy authtoken tại https://dashboard.ngrok.com/get-started/your-authtoken
 ngrok config add-authtoken <TOKEN>
 
-# Mở tunnel
+# Cập nhật ngrok nếu báo "agent version too old"
+ngrok update
+
+# Mở tunnel (chỉ sau khi API đã health OK)
 ngrok http 5000
 ```
 
-Ngrok in URL dạng `https://xxxx.ngrok-free.app`. Chia sẻ:
+**Trên Windows**, nếu gõ `ngrok` báo *not recognized*, dùng đường dẫn đầy đủ (hoặc mở terminal mới sau khi cài winget):
+
+```powershell
+& "$env:LOCALAPPDATA\Microsoft\WinGet\Links\ngrok.exe" http 5000
+```
+
+Xem URL public tại cửa sổ ngrok hoặc: http://127.0.0.1:4040
+
+Ngrok in URL dạng `https://xxxx.ngrok-free.dev`. Chia sẻ:
 
 ```
-https://xxxx.ngrok-free.app/api-docs
+https://xxxx.ngrok-free.dev/api-docs
 ```
+
+Trình duyệt free tier có thể hiện trang cảnh báo — bấm **Visit Site**, hoặc gọi API kèm header `ngrok-skip-browser-warning: true`.
 
 | Ưu | Nhược |
 |----|--------|
@@ -215,6 +229,53 @@ https://xxxx.ngrok-free.app/api-docs
 | Chỉ expose port 5000 | Free tier có giới hạn bandwidth |
 
 Ollama **không cần** expose ra ngoài — API gọi Ollama nội bộ trong Docker.
+
+---
+
+## Mang project lên máy trường / máy khác (checklist)
+
+Dùng khi copy từ máy nhà sang phòng lab, máy bạn, máy demo...
+
+### Bước 1 — Lấy code mới nhất
+
+```powershell
+git clone https://github.com/soloplayer345/cnxh-chapter6-chat-api.git
+cd cnxh-chapter6-chat-api
+# hoặc nếu đã clone: git pull
+```
+
+**Quan trọng:** Luôn dùng repo có `package-lock.json` đồng bộ với `package.json` (đã commit trên GitHub). Không chỉ copy thư mục bằng USB nếu thiếu file lock.
+
+### Bước 2 — Chạy bằng Docker (khuyến nghị ở trường)
+
+```powershell
+# Bật Docker Desktop, đợi icon xanh
+docker compose up -d --build
+```
+
+Kiểm tra:
+
+```powershell
+docker ps
+# cnxh-chat-api phải STATUS = Up (không phải Restarting)
+curl http://localhost:5000/health
+```
+
+### Bước 3 — Ngrok (nếu cần chia sẻ ra ngoài WiFi trường)
+
+Chỉ chạy **sau** bước 2 thành công. Xem [Cách 4](#cách-4--public-ra-internet-bằng-ngrok).
+
+### Bước 4 — Nếu lỗi
+
+Xem mục [Xử lý lỗi thường gặp](#xử-lý-lỗi-thường-gặp) bên dưới — đặc biệt các mục Docker `npm ci`, `entrypoint.sh`, ngrok, chat 503.
+
+### Ghi chú môi trường trường
+
+| Vấn đề | Gợi ý |
+|--------|--------|
+| Mạng trường chặn npm / SSL | Dùng Docker build (tải package trong container), không `npm install` trên host |
+| Máy yếu RAM | Docker + Ollama cần ≥ 8 GB; chat chậm trên CPU là bình thường |
+| Không cài được ngrok | Dùng [Cách 3 — LAN](#cách-3--cho-mọi-người-trong-cùng-wifi-lan) trong cùng WiFi phòng |
 
 ---
 
@@ -243,6 +304,89 @@ Lỗi `dockerDesktopLinuxEngine: The system cannot find the file specified` → 
 ### Chat chậm
 
 Model chạy CPU sẽ chậm hơn GPU. Giảm tải bằng cách hạn chế số người chat đồng thời.
+
+### Docker build: `npm ci` — package-lock.json không khớp
+
+**Triệu chứng** khi `docker compose up --build`:
+
+```text
+npm error `npm ci` can only install packages when your package.json and package-lock.json are in sync
+npm error Missing: swagger-ui-express@...
+```
+
+**Nguyên nhân:** Cài dependency bằng `bun install` trên máy dev nhưng chưa cập nhật `package-lock.json` (Docker dùng `npm ci`).
+
+**Cách xử lý** (chạy tại thư mục project):
+
+```powershell
+# Cách 1: Cập nhật lock file bằng Docker (ổn định khi mạng trường lỗi SSL npm trên host)
+docker run --rm -v "${PWD}:/app" -w /app node:22-alpine npm install
+
+# Cách 2: Trên host (nếu npm chạy được)
+npm install
+
+# Sau đó build lại
+docker compose up -d --build
+```
+
+Commit và push `package-lock.json` lên Git để máy khác không gặp lại.
+
+### Docker: container `cnxh-chat-api` Restarting — `exec /entrypoint.sh: no such file or directory`
+
+**Triệu chứng:** `docker ps` thấy API **Restarting**; ngrok tunnel mở nhưng vào link báo lỗi / không có phản hồi.
+
+**Nguyên nhân:** File `docker/entrypoint.sh` bị lưu kiểu Windows (CRLF). Linux trong container không chạy được shebang `#!/bin/sh`.
+
+**Cách xử lý:**
+
+1. Pull code mới nhất (repo đã có `.gitattributes` cho `*.sh` và Dockerfile tự `sed` bỏ `\r`).
+2. Build lại image:
+
+```powershell
+docker compose down
+docker compose up -d --build
+docker compose logs api --tail 20
+# Phải thấy server listen port 5000, không còn lỗi entrypoint
+```
+
+Nếu vẫn lỗi trên máy clone cũ: mở `docker/entrypoint.sh` bằng VS Code/Cursor → góc dưới chọn **LF** (không phải CRLF) → lưu → build lại.
+
+### Ngrok không chạy / tunnel không vào được API
+
+| Triệu chứng | Cách xử lý |
+|-------------|------------|
+| `ngrok` is not recognized | Dùng `& "$env:LOCALAPPDATA\Microsoft\WinGet\Links\ngrok.exe" http 5000` hoặc mở terminal mới sau `winget install` |
+| `agent version too old` | `ngrok update` (cần ≥ 3.20) |
+| `Error reading configuration file` / thiếu `version` | `ngrok config upgrade` hoặc file config có `version: "2"` + `authtoken` |
+| Tunnel mở nhưng link lỗi 502 / trống | API chưa chạy — kiểm tra http://localhost:5000/health trước |
+| `x509: certificate signed by unknown authority` | Proxy/antivirus trường chặn HTTPS — thử mạng khác, tắt proxy, hoặc dùng LAN thay ngrok |
+| Container API **Restarting** | Xem mục `entrypoint.sh` ở trên |
+
+**Thứ tự đúng:** Docker/API health OK → rồi mới `ngrok http 5000`.
+
+### Chat trả 503 hoặc treo rất lân (>2 phút) rồi timeout
+
+**Nguyên nhân thường gặp với model `qwen3.5:0.8b`:** Bật chế độ *thinking* mặc định → Ollama xử lý cực chậm trên CPU.
+
+Project đã cấu hình trong `src/services/ollama.service.ts`:
+
+- `think: false`
+- `options.num_predict: 512`
+
+Sau khi `git pull`, build lại Docker hoặc restart `bun run dev`.
+
+**Kiểm tra Ollama trong Docker:**
+
+```powershell
+docker compose logs ollama-init
+docker compose exec ollama ollama list
+```
+
+Lần chat **đầu tiên** sau khi bật máy có thể ~20–40 giây (load model); các lần sau nhanh hơn.
+
+### `npm install` trên Windows báo `UNABLE_TO_VERIFY_LEAF_SIGNATURE`
+
+Mạng/antivirus chặn chứng chỉ npm. **Không bắt buộc** nếu dùng Docker: build trong container (xem mục `npm ci` ở trên). Chạy local có thể dùng `bun install` thay `npm install`.
 
 ---
 
