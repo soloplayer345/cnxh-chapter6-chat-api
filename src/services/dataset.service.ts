@@ -49,37 +49,68 @@ export async function loadDataset(): Promise<DatasetRecord[]> {
   return cachedDataset;
 }
 
+/** Điểm tối thiểu để coi câu hỏi thuộc phạm vi Chương 6 (keyword matching) */
+export const MIN_RELEVANCE_SCORE = 2;
+
+export interface RelevantRecordsResult {
+  records: DatasetRecord[];
+  bestScore: number;
+  isRelevant: boolean;
+}
+
+function scoreRecord(
+  record: DatasetRecord,
+  keywords: string[]
+): number {
+  const text = recordSearchText(record);
+  const totalScore = countKeywordMatches(text, keywords);
+  const instructionScore = countKeywordMatches(record.instruction, keywords);
+  return totalScore + instructionScore;
+}
+
+/** Tìm record liên quan + đánh giá có thuộc phạm vi dataset hay không */
+export async function findRelevantRecordsWithScore(
+  question: string,
+  limit: number = 5
+): Promise<RelevantRecordsResult> {
+  const dataset = await loadDataset();
+  const keywords = extractKeywords(question);
+
+  if (keywords.length === 0) {
+    return { records: [], bestScore: 0, isRelevant: false };
+  }
+
+  const scored = dataset
+    .map((record) => ({
+      record,
+      score: scoreRecord(record, keywords),
+    }))
+    .sort((a, b) => b.score - a.score);
+
+  const bestScore = scored[0]?.score ?? 0;
+  const isRelevant = bestScore >= MIN_RELEVANCE_SCORE;
+
+  if (!isRelevant) {
+    return { records: [], bestScore, isRelevant: false };
+  }
+
+  return {
+    records: scored
+      .filter((item) => item.score > 0)
+      .slice(0, limit)
+      .map((item) => item.record),
+    bestScore,
+    isRelevant: true,
+  };
+}
+
 /** Tìm các record liên quan nhất theo keyword matching */
 export async function findRelevantRecords(
   question: string,
   limit: number = 5
 ): Promise<DatasetRecord[]> {
-  const dataset = await loadDataset();
-  const keywords = extractKeywords(question);
-
-  if (keywords.length === 0) {
-    return dataset.slice(0, limit);
-  }
-
-  const scored = dataset.map((record) => {
-    const text = recordSearchText(record);
-    const totalScore = countKeywordMatches(text, keywords);
-    const instructionScore = countKeywordMatches(record.instruction, keywords);
-    return {
-      record,
-      score: totalScore + instructionScore,
-    };
-  });
-
-  scored.sort((a, b) => b.score - a.score);
-
-  const top = scored.filter((item) => item.score > 0).slice(0, limit);
-
-  if (top.length === 0) {
-    return dataset.slice(0, limit);
-  }
-
-  return top.map((item) => item.record);
+  const { records } = await findRelevantRecordsWithScore(question, limit);
+  return records;
 }
 
 /** Format context từ các record cho prompt */

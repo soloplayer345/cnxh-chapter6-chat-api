@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import {
-  findRelevantRecords,
+  findRelevantRecordsWithScore,
   formatRecordsAsContext,
 } from "./dataset.service";
 import { generateAnswer } from "./ollama.service";
@@ -10,6 +10,10 @@ import { ChatMessage } from "../types/ai.types";
 const CONTEXT_RECORD_LIMIT = 5;
 /** 5 lượt hỏi đáp = tối đa 10 tin nhắn (user + assistant) */
 const HISTORY_MESSAGE_LIMIT = 10;
+
+/** Trả lời cố định khi câu hỏi ngoài phạm vi Chương 6 */
+export const OUT_OF_SCOPE_ANSWER =
+  "Câu hỏi này ngoài phạm vi Chương 6 (Vấn đề dân tộc và tôn giáo) — chương trình môn CNXH khoa học. Tôi không trả lời được nội dung ngoài bài học.";
 
 function formatHistoryForPrompt(messages: ChatMessage[]): string {
   if (messages.length === 0) {
@@ -26,10 +30,11 @@ function buildPrompt(
   history: string,
   message: string
 ): string {
-  return `Bạn là chatbot hỗ trợ học môn Chủ nghĩa xã hội khoa học.
-Bạn chỉ được trả lời dựa trên dữ liệu Chương 6 được cung cấp.
-Nếu câu hỏi nằm ngoài nội dung Chương 6, hãy nói rằng nội dung này chưa có trong dữ liệu.
-Trả lời bằng tiếng Việt, rõ ràng, dễ hiểu, phù hợp cho sinh viên ôn tập.
+  return `Bạn là chatbot hỗ trợ học môn Chủ nghĩa xã hội khoa học — chỉ Chương 6: Vấn đề dân tộc và tôn giáo.
+Bạn CHỈ được trả lời dựa trên "Dữ liệu liên quan" bên dưới.
+Nếu câu hỏi không thuộc Chương 6 hoặc dữ liệu không đủ để trả lời, hãy trả lời ĐÚNG MỘT câu ngắn (không giải thích dài, không dùng kiến thức ngoài):
+"${OUT_OF_SCOPE_ANSWER}"
+Trả lời bằng tiếng Việt, rõ ràng, phù hợp sinh viên ôn tập khi trong phạm vi bài học.
 Không bịa thông tin ngoài context.
 
 Dữ liệu liên quan:
@@ -65,11 +70,8 @@ export async function processChat(
     activeSessionId = uuidv4();
   }
 
-  const relevantRecords = await findRelevantRecords(
-    message,
-    CONTEXT_RECORD_LIMIT
-  );
-  const context = formatRecordsAsContext(relevantRecords);
+  const { records: relevantRecords, isRelevant } =
+    await findRelevantRecordsWithScore(message, CONTEXT_RECORD_LIMIT);
 
   const recentMessages = await chatHistory.getRecentMessages(
     activeSessionId,
@@ -77,8 +79,15 @@ export async function processChat(
   );
   const historyText = formatHistoryForPrompt(recentMessages);
 
-  const prompt = buildPrompt(context, historyText, message);
-  const answer = await generateAnswer(prompt);
+  const answer = isRelevant
+    ? await generateAnswer(
+        buildPrompt(
+          formatRecordsAsContext(relevantRecords),
+          historyText,
+          message
+        )
+      )
+    : OUT_OF_SCOPE_ANSWER;
 
   await chatHistory.ensureSession(activeSessionId);
   await chatHistory.addMessage(activeSessionId, "user", message);

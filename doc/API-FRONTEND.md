@@ -388,7 +388,8 @@ VITE_API_URL=http://localhost:5000
 
 | Mục | Chi tiết |
 |-----|----------|
-| Ngữ cảnh bot | Chỉ dựa dataset **Chương 6**; câu ngoài phạm vi bot có thể trả “chưa có trong dữ liệu” |
+| Ngữ cảnh bot | Chỉ dựa dataset **Chương 6**; câu **ngoài bài học** → trả lời ngắn cố định, không gọi Ollama (nhanh hơn) |
+| Ngoài phạm vi | `answer`: *"Câu hỏi này ngoài phạm vi Chương 6 (Vấn đề dân tộc và tôn giáo) — chương trình môn CNXH khoa học. Tôi không trả lời được nội dung ngoài bài học."* |
 | Lịch sử gửi cho AI | Tối đa **10 tin** gần nhất mỗi phiên (5 lượt hỏi–đáp) |
 | Lưu trữ | Server lưu file JSON, **không** đồng bộ đa thiết bị tự động |
 | Streaming | **Không** hỗ trợ SSE/WebSocket — một request trả một `answer` đầy đủ |
