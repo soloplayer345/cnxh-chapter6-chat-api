@@ -1,0 +1,45 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: cnxh-ollama
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+  ollama-init:
+    image: ollama/ollama:latest
+    container_name: cnxh-ollama-init
+    depends_on:
+      ollama:
+        condition: service_started
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        echo "Dang tai model qwen3.5:0.8b (lan dau co the mat vai phut)..."
+        ollama pull qwen3.5:0.8b
+        echo "Model san sang."
+    restart: "no"
+
+  api:
+    build: .
+    container_name: cnxh-chat-api
+    ports:
+      - "5000:5000"
+    environment:
+      PORT: 5000
+      OLLAMA_URL: http://ollama:11434/api/generate
+      OLLAMA_MODEL: qwen3.5:0.8b
+    volumes:
+      - api_data:/app/src/data
+    depends_on:
+      ollama:
+        condition: service_started
+      ollama-init:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
+  api_data:
