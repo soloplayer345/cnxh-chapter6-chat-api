@@ -412,11 +412,13 @@ src/data/chat-history.json
 
 (trong Docker: volume `api_data`)
 
-Dataset kiến thức Chương 6:
+Dataset kiến thức Chương 6 (RAG, **41 mẫu** hỏi–đáp, có metadata `source` / `records`):
 
 ```
 src/data/chuong_6_dan_toc_ton_giao_dataset.json
 ```
+
+Sau khi đổi dataset: restart API hoặc `docker compose up -d --build` để Docker copy file mới vào image.
 
 ---
 
@@ -433,10 +435,19 @@ src/data/chuong_6_dan_toc_ton_giao_dataset.json
 
 ---
 
+## Tài liệu cho Frontend
+
+Team FE nối API xem: **[doc/API-FRONTEND.md](./doc/API-FRONTEND.md)** — base URL, request/response, `sessionId`, TypeScript types, ví dụ `fetch`/axios, timeout, ngrok.
+
+Swagger thử nhanh: http://localhost:5000/api-docs
+
+---
+
 ## Phụ lục — Log hỗ trợ AI
 
 Thư mục [`doc/`](./doc/) ghi lại quá trình phát triển có hỗ trợ AI (Cursor), dùng làm phụ lục báo cáo/đồ án.
 
+- [doc/API-FRONTEND.md](./doc/API-FRONTEND.md) — Hướng dẫn tích hợp API cho FE
 - [doc/phu-luc-log-ai.md](./doc/phu-luc-log-ai.md) — Nhật ký chi tiết các bước AI hỗ trợ
 
 ---

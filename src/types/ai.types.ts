@@ -1,6 +1,9 @@
 export interface DatasetRecord {
+  id?: string;
   instruction: string;
+  input?: string;
   output: string;
+  tags?: string[];
 }
 
 export type MessageRole = "user" | "assistant";

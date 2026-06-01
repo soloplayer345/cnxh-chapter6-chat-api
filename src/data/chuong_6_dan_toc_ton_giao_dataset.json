@@ -1,106 +1,326 @@
-[
-  {
-    "instruction": "Chương 6 môn Chủ nghĩa xã hội khoa học nói về nội dung gì?",
-    "output": "Chương 6 có tên \"Vấn đề dân tộc và tôn giáo trong thời kỳ quá độ lên chủ nghĩa xã hội\". Chương trình bài học gồm hai phần lớn: vấn đề dân tộc và vấn đề tôn giáo trong bối cảnh xây dựng chủ nghĩa xã hội ở Việt Nam, các quan điểm, đường lối, chính sách của Đảng và Nhà nước, cùng nhiệm vụ của sinh viên trong việc hiểu và thực hiện các chính sách đó."
+{
+  "dataset_name": "chuong_6_van_de_dan_toc_va_ton_giao_cnxhkh",
+  "source": {
+    "title": "Giáo trình Chủ nghĩa xã hội khoa học",
+    "chapter": "Chương 6: Vấn đề dân tộc và tôn giáo trong thời kỳ quá độ lên chủ nghĩa xã hội",
+    "note": "Dataset được chuyển hóa dưới dạng tóm tắt/hỏi đáp để phục vụ học tập và fine-tuning, không sao chép nguyên văn toàn bộ chương."
   },
-  {
-    "instruction": "Thời kỳ quá độ lên chủ nghĩa xã hội là gì?",
-    "output": "Thời kỳ quá độ lên chủ nghĩa xã hội là giai đoạn chuyển tiếp từ xã hội mang nhiều tàn dư của các hình thái xã hội trước (trong đó có xã hội dân chủ nhân dân) sang xã hội xã hội chủ nghĩa. Ở Việt Nam, thời kỳ quá độ được xác định sau Cách mạng Tháng Tám, khi đất nước chưa đủ điều kiện đi thẳng lên CNXH mà phải qua bước trung gian, xây dựng nền tảng kinh tế – chính trị – văn hóa cho CNXH."
-  },
-  {
-    "instruction": "Vì sao trong thời kỳ quá độ phải quan tâm đến vấn đề dân tộc?",
-    "output": "Việt Nam là quốc gia đa dân tộc; trong thời kỳ quá độ, các dân tộc cùng xây dựng CNXH nên cần giải quyết mối quan hệ dân tộc – giai cấp, thống nhất lợi ích dân tộc và giai cấp, chống chia rẽ, kỳ thị dân tộc. Quan tâm vấn đề dân tộc giúp củng cố khối đại đoàn kết toàn dân tộc, tạo sức mạnh cho công cuộc đổi mới, xây dựng và bảo vệ Tổ quốc."
-  },
-  {
-    "instruction": "Quan điểm cơ bản của chủ nghĩa Mác – Lênin về vấn đề dân tộc là gì?",
-    "output": "Chủ nghĩa Mác – Lênin coi vấn đề dân tộc gắn với vấn đề giai cấp và cách mạng. Dân tộc là cộng đồng lịch sử – văn hóa hình thành trong quá trình phát triển lâu dài. Trong điều kiện đế quốc và thuộc địa, vấn đề dân tộc trở thành vấn đề dân tộc thuộc địa, gắn với đấu tranh giải phóng dân tộc và giai cấp. Mục tiêu là xóa bỏ áp bức dân tộc, thiết lập quan hệ bình đẳng, đoàn kết các dân tộc trên tinh thần chủ nghĩa quốc tế chân chính."
-  },
-  {
-    "instruction": "Khái niệm dân tộc theo quan điểm Mác – Lênin?",
-    "output": "Dân tộc là cộng đồng người ổn định, hình thành trên một bề mặt địa lý nhất định, có những đặc trưng kinh tế, chính trị, văn hóa, ngôn ngữ, tâm lý dân tộc tương đối ổn định trong lịch sử. Dân tộc không phải là hiện tượng vĩnh cửu mà có quá trình hình thành, phát triển và trong tương lai xa sẽ có xu hướng hòa nhập."
-  },
-  {
-    "instruction": "Đặc điểm dân tộc Việt Nam?",
-    "output": "Việt Nam có 54 dân tộc anh em, trong đó dân tộc Kinh chiếm đa số. Đất nước thống nhất về lãnh thổ, có chung lịch sử đấu tranh giải phóng dân tộc, chung nền tảng tư tưởng Mác – Lênin, cùng hướng tới mục tiêu độc lập dân tộc và CNXH. Các dân tộc có bản sắc văn hóa riêng nhưng đều là chủ nhân đất nước, cùng quyền bình đẳng trước pháp luật."
-  },
-  {
-    "instruction": "Mối quan hệ giữa vấn đề dân tộc và vấn đề giai cấp ở Việt Nam?",
-    "output": "Ở Việt Nam, lợi ích dân tộc và lợi ích giai cộng công nhân, nhân dân lao động thống nhất với nhau. Đấu tranh giải phóng dân tộc, bảo vệ Tổ quốc gắn với đấu tranh giải phóng giai cấp, xây dựng CNXH. Đảng vận dụng nguyên tắc kết hợp vấn đề dân tộc với vấn đề giai cấp, không tách rời, không coi thường một trong hai mặt."
-  },
-  {
-    "instruction": "Đường lối dân tộc của Đảng Cộng sản Việt Nam là gì?",
-    "output": "Đường lối dân tộc của Đảng là đoàn kết, bình đẳng các dân tộc; tôn trọng, bảo tồn và phát huy bản sắc văn hóa dân tộc; xóa bỏ mọi hình thức phân biệt, kỳ thị dân tộc; thực hiện chính sách phát triển kinh tế – xã hội ở vùng đồng bào dân tộc thiểu số; xây dựng khối đại đoàn kết toàn dân tộc vì mục tiêu độc lập, tự do và CNXH."
-  },
-  {
-    "instruction": "Chính sách dân tộc của Nhà nước Việt Nam hiện nay gồm những nội dung chính nào?",
-    "output": "Chính sách dân tộc bao gồm: bình đẳng các dân tộc trước pháp luật; tôn trọng và bảo đảm quyền sử dụng tiếng nói, chữ viết của mỗi dân tộc; phát triển kinh tế – xã hội, giáo dục, y tế, văn hóa ở vùng dân tộc thiểu số; đầu tư cơ sở hạ tầng; đào tạo cán bộ người dân tộc; chống chia rẽ, kỳ thị dân tộc; phát huy vai trò Mặt trận Tổ quốc và các tổ chức chính trị – xã hội trong khối đại đoàn kết dân tộc."
-  },
-  {
-    "instruction": "Khối đại đoàn kết toàn dân tộc là gì?",
-    "output": "Khối đại đoàn kết toàn dân tộc là liên minh các tầng lớp nhân dân, các dân tộc cùng chung mục tiêu xây dựng và bảo vệ Tổ quốc, do Đảng lãnh đạo, do Mặt trận Tổ quốc Việt Nam làm nòng cốt. Đây là sức mạnh tổng hợp của dân tộc trong sự nghiệp CNXH và bảo vệ Tổ quốc."
-  },
-  {
-    "instruction": "Vì sao phải quan tâm vấn đề tôn giáo trong thời kỳ quá độ?",
-    "output": "Ở Việt Nam, tôn giáo tồn tại lâu dài, có đông đảo tín đồ. Trong thời kỳ quá độ, cần đoàn kết mọi lực lượng xã hội, trong đó có tín đồ tôn giáo, thực hiện tự do tín ngưỡng, tôn giáo, đồng thời ngăn chặn lợi dụng tôn giáo để chống phá CNXH. Vì vậy, vấn đề tôn giáo là một bộ phận của công tác dân vận, xây dựng khối đại đoàn kết."
-  },
-  {
-    "instruction": "Quan điểm Mác – Lênin về tôn giáo?",
-    "output": "Chủ nghĩa Mác – Lênin cho rằng tôn giáo là hình thái ý thức xã hội, phản ánh điều kiện sống và tâm lý của con người trong những hoàn cảnh nhất định. Nhà nước xã hội chủ nghĩa không cấm tín ngưỡng, tôn giáo mà tạo điều kiện tự do tín ngưỡng, đồng thời giáo dục khoa học, từng bước hạn chế ảnh hưởng tiêu cực của tôn giáo, không cho lợi dụng tôn giáo chống lại nhân dân."
-  },
-  {
-    "instruction": "Khái niệm tôn giáo?",
-    "output": "Tôn giáo là hình thức tín ngưỡng với hệ thống giáo lý, giáo luật, nghi lễ, tổ chức tương đối hoàn chỉnh; có cộng đồng tín đồ, có tổ chức hoạt động. Tôn giáo khác với mê tín dị đoan ở chỗ có tổ chức và giáo lý hệ thống."
-  },
-  {
-    "instruction": "Đặc điểm tình hình tôn giáo ở Việt Nam?",
-    "output": "Việt Nam có nhiều tôn giáo (Phật giáo, Công giáo, Tin Lành, Cao Đài, Hòa Hảo, Hồi giáo, v.v.) với hàng chục triệu tín đồ. Tôn giáo gắn với đời sống văn hóa, lịch sử dân tộc. Nhà nước thừa nhận và quản lý hoạt động tôn giáo theo pháp luật, khuyến khích tôn giáo hòa nhập với dân tộc, phục vụ đời sối tốt đẹp của nhân dân."
-  },
-  {
-    "instruction": "Chính sách tôn giáo của Nhà nước Việt Nam?",
-    "output": "Nhà nước bảo đảm quyền tự do tín ngưỡng, tôn giáo của công dân; tôn trọng quyền tự chủ của tổ chức tôn giáo trong phạm vi pháp luật; khuyến khích tín đồ, chức sắc, nhà tu hành tham gia hoạt động xây dựng và bảo vệ Tổ quốc; nghiêm cấm lợi dụng tôn giáo để chia rẽ dân tộc, chống phá Nhà nước, trái với pháp luật và đạo đức."
-  },
-  {
-    "instruction": "Luật Tín ngưỡng, tôn giáo 2016 có vai trò gì?",
-    "output": "Luật Tín ngưỡng, tôn giáo năm 2016 (có hiệu lực từ 2018) là cơ sở pháp lý thống nhất về quyền tự do tín ngưỡng, tôn giáo; quy định đăng ký hoạt động tôn giáo, quyền và nghĩa vụ của tổ chức tôn giáo, tín đồ; tạo khung pháp lý để Nhà nước quản lý nhà nước về tôn giáo và tôn giáo hoạt động trong khuôn khổ pháp luật."
-  },
-  {
-    "instruction": "Nguyên tắc \"Dân tộc – Đạo phái – Tổ quốc\" nghĩa là gì?",
-    "output": "Đây là khẩu hiệu thể hiện tinh thần yêu nước, trung thành với Tổ quốc, đoàn kết dân tộc và tôn trọng tín ngưỡng, tôn giáo. Tín đồ các tôn giáo được khuyến khích sống tốt đời đẹp đạo, góp phần xây dựng đất nước, không đặt lợi ích tôn giáo trái với lợi ích quốc gia – dân tộc."
-  },
-  {
-    "instruction": "Phân biệt tự do tín ngưỡng, tôn giáo với lợi dụng tôn giáo trái pháp luật?",
-    "output": "Tự do tín ngưỡng, tôn giáo là quyền công dân được Hiến pháp và pháp luật bảo vệ: được tin theo hoặc không tin theo tôn giáo, thực hành nghi lễ hợp pháp. Lợi dụng tôn giáo trái pháp luật là hành vi dùng tôn giáo để chống phá Nhà nước, gây chia rẽ, truyền bá mê tín, lừa đảo, vi phạm an ninh, trật tự – đó là hành vi bị nghiêm cấm và xử lý theo pháp luật."
-  },
-  {
-    "instruction": "Vai trò của sinh viên trong thực hiện chính sách dân tộc, tôn giáo?",
-    "output": "Sinh viên cần nắm vững kiến thức cơ bản về vấn đề dân tộc và tôn giáo; tích cực tuyên truyền, thực hiện đường lối, chính sách của Đảng và Nhà nước; tôn trọng bản sắc văn hóa các dân tộc, tôn trọng tín ngưỡng, tôn giáo của người khác; chống kỳ thị dân tộc, chia rẽ tôn giáo; góp phần xây dựng môi trường học tập đoàn kết, lành mạnh."
-  },
-  {
-    "instruction": "Chủ nghĩa quốc tế và vấn đề dân tộc có mâu thuẫn không?",
-    "output": "Theo quan điểm Mác – Lênin, chủ nghĩa quốc tế chân chính không mâu thuẫn với yêu nước và đoàn kết dân tộc. Đoàn kết quốc tế giai cộng nhân dân lao động và đoàn kết các dân tộc bị áp bức gắn với đấu tranh chống đế quốc, xây dựng CNXH. Tinh thần quốc tế chân chính tôn trọng độc lập, chủ quyền dân tộc, không đặt lợi ích dân tộc này lên trên lợi ích cách mạng chung."
-  },
-  {
-    "instruction": "Một số thách thức về vấn đề dân tộc trong thời kỳ quá độ?",
-    "output": "Còn khoảng cách phát triển giữa vùng đồng bào dân tộc thiểu số và vùng đồng bằng; một số hành vi kỳ thị, chia rẽ dân tộc; thế lực thù địch lợi dụng vấn đề dân tộc để xuyên tạc, kích động ly khai. Cần tiếp tục đầu tư phát triển kinh tế – xã hội, giáo dục, đào tạo nguồn nhân lực cho vùng dân tộc thiểu số và tăng cường giáo dục truyền thống đoàn kết dân tộc."
-  },
-  {
-    "instruction": "Một số thách thức về vấn đề tôn giáo trong thời kỳ quá độ?",
-    "output": "Có hiện tượng mê tín, lợi dụng tôn giáo trái pháp luật; một số tổ chức, cá nhân lợi dụng tôn giáo chống phá, gây mất ổn định; thế lực thù địch can thiệp qua tôn giáo. Nhà nước cần quản lý chặt theo pháp luật, đồng thời đối thoại, giải thích chính sách, hướng tôn giáo hoạt động vì hòa bình, phát triển của đất nước."
-  },
-  {
-    "instruction": "Quyền và nghĩa vụ của công dân về tín ngưỡng, tôn giáo?",
-    "output": "Công dân có quyền tự do tín ngưỡng, tôn giáo; không bị phân biệt đối xử vì lý do tín ngưỡng, tôn giáo. Đồng thời phải tôn trọng pháp luật, không lợi dụng tôn giáo để vi phạm an ninh quốc gia, trật tự xã hội, quyền của người khác; tham gia xây dựng và bảo vệ Tổ quốc theo tinh thần làm chủ đất nước."
-  },
-  {
-    "instruction": "Tại sao nói vấn đề dân tộc và tôn giáo có tính lịch sử, cụ thể?",
-    "output": "Vấn đề dân tộc và tôn giáo phát sinh trong bối cảnh lịch sử – xã hội nhất định, biến đổi theo từng giai đoạn. Ở Việt Nam, giải quyết hai vấn đề này phải gắn với thực tiễn đa dân tộc, đa tôn giáo, với mục tiêu CNXH và độc lập dân tộc. Không thể áp máy móc mô hình nước khác mà phải vận dụng sáng tạo đường lối, chính sách của Đảng."
-  },
-  {
-    "instruction": "Nội dung phần học về vấn đề dân tộc trong chương 6?",
-    "output": "Phần vấn đề dân tộc gồm: khái niệm, đặc điểm dân tộc; quan điểm Mác – Lênin về vấn đề dân tộc; đặc điểm dân tộc Việt Nam; mối quan hệ dân tộc – giai cấp; đường lối, chính sách dân tộc của Đảng và Nhà nước; khối đại đoàn kết toàn dân tộc; thách thức và giải pháp trong thời kỳ quá độ."
-  },
-  {
-    "instruction": "Nội dung phần học về vấn đề tôn giáo trong chương 6?",
-    "output": "Phần vấn đề tôn giáo gồm: khái niệm tôn giáo; quan điểm Mác – Lênin; tình hình tôn giáo Việt Nam; chính sách, pháp luật về tín ngưỡng, tôn giáo; nguyên tắc \"Dân tộc – Đạo phái – Tổ quốc\"; phân biệt tự do tôn giáo và lợi dụng trái pháp luật; vai trò của sinh viên và các thách thức trong thời kỳ quá độ."
-  }
-]
+  "format": "instruction_tuning",
+  "language": "vi",
+  "records": [
+    {
+      "instruction": "Tóm tắt nội dung chính của Chương 6.",
+      "input": "",
+      "output": "Chương 6 trình bày vấn đề dân tộc và tôn giáo trong thời kỳ quá độ lên chủ nghĩa xã hội. Nội dung gồm: khái niệm và đặc trưng của dân tộc; quan điểm của chủ nghĩa Mác - Lênin về vấn đề dân tộc; đặc điểm dân tộc ở Việt Nam; quan điểm, chính sách dân tộc của Đảng và Nhà nước; bản chất, nguồn gốc, tính chất của tôn giáo; nguyên tắc giải quyết vấn đề tôn giáo; đặc điểm tôn giáo ở Việt Nam; chính sách tôn giáo; và mối quan hệ dân tộc - tôn giáo ở Việt Nam."
+    },
+    {
+      "instruction": "Trình bày khái niệm dân tộc theo nghĩa rộng.",
+      "input": "",
+      "output": "Dân tộc theo nghĩa rộng là cộng đồng người ổn định, hình thành trong lịch sử, làm thành nhân dân một nước, có lãnh thổ chung, phương thức sinh hoạt kinh tế chung, ngôn ngữ chung, văn hóa và tâm lý chung, đồng thời có nhà nước đại diện cho cộng đồng đó."
+    },
+    {
+      "instruction": "Liệt kê các đặc trưng cơ bản của dân tộc theo nghĩa rộng.",
+      "input": "",
+      "output": "Các đặc trưng cơ bản của dân tộc theo nghĩa rộng gồm: có lãnh thổ chung; có phương thức sinh hoạt kinh tế chung; có ngôn ngữ chung; có văn hóa và tâm lý chung; có nhà nước chung đại diện cho cộng đồng dân tộc."
+    },
+    {
+      "instruction": "Trình bày khái niệm dân tộc theo nghĩa hẹp.",
+      "input": "",
+      "output": "Dân tộc theo nghĩa hẹp thường chỉ cộng đồng tộc người được hình thành trong lịch sử, có chung ngôn ngữ, văn hóa, ý thức tự giác tộc người và có sự gắn bó cộng đồng tương đối bền vững."
+    },
+    {
+      "instruction": "Phân biệt dân tộc theo nghĩa rộng và dân tộc theo nghĩa hẹp.",
+      "input": "",
+      "output": "Dân tộc theo nghĩa rộng thường chỉ cộng đồng quốc gia - dân tộc, gồm toàn thể nhân dân trong một nước, có lãnh thổ, kinh tế, ngôn ngữ, văn hóa và nhà nước chung. Dân tộc theo nghĩa hẹp thường chỉ tộc người, là cộng đồng người có chung ngôn ngữ, văn hóa và ý thức tự giác tộc người."
+    },
+    {
+      "instruction": "Nêu hai xu hướng khách quan trong sự phát triển quan hệ dân tộc theo chủ nghĩa Mác - Lênin.",
+      "input": "",
+      "output": "Hai xu hướng khách quan là: thứ nhất, các cộng đồng dân cư có xu hướng tách ra để hình thành cộng đồng dân tộc độc lập; thứ hai, các dân tộc có xu hướng liên hiệp lại với nhau trên cơ sở bình đẳng, hợp tác và cùng phát triển."
+    },
+    {
+      "instruction": "Cương lĩnh dân tộc của chủ nghĩa Mác - Lênin gồm những nội dung nào?",
+      "input": "",
+      "output": "Cương lĩnh dân tộc của chủ nghĩa Mác - Lênin gồm ba nội dung cơ bản: các dân tộc hoàn toàn bình đẳng; các dân tộc được quyền tự quyết; liên hiệp công nhân tất cả các dân tộc."
+    },
+    {
+      "instruction": "Giải thích nội dung 'các dân tộc hoàn toàn bình đẳng'.",
+      "input": "",
+      "output": "Các dân tộc hoàn toàn bình đẳng có nghĩa là mọi dân tộc, dù đông người hay ít người, trình độ phát triển cao hay thấp, đều có quyền và nghĩa vụ như nhau, không dân tộc nào được có đặc quyền, đặc lợi hoặc áp bức dân tộc khác."
+    },
+    {
+      "instruction": "Giải thích nội dung 'các dân tộc được quyền tự quyết'.",
+      "input": "",
+      "output": "Các dân tộc được quyền tự quyết nghĩa là mỗi dân tộc có quyền tự quyết định vận mệnh chính trị của mình, quyền lựa chọn con đường phát triển phù hợp, bao gồm quyền tách ra thành lập quốc gia độc lập hoặc liên hiệp với các dân tộc khác trên cơ sở tự nguyện, bình đẳng."
+    },
+    {
+      "instruction": "Giải thích nội dung 'liên hiệp công nhân tất cả các dân tộc'.",
+      "input": "",
+      "output": "Liên hiệp công nhân tất cả các dân tộc là nội dung thể hiện sự đoàn kết quốc tế của giai cấp công nhân và nhân dân lao động. Đây là cơ sở để chống chủ nghĩa dân tộc hẹp hòi, chủ nghĩa sô vanh, đồng thời gắn phong trào giải phóng dân tộc với phong trào cách mạng xã hội chủ nghĩa."
+    },
+    {
+      "instruction": "Nêu các đặc điểm cơ bản của dân tộc ở Việt Nam.",
+      "input": "",
+      "output": "Việt Nam là quốc gia đa dân tộc. Các dân tộc ở Việt Nam có sự chênh lệch về số dân, cư trú xen kẽ, phân bố ở nhiều địa bàn chiến lược, có trình độ phát triển không đều, có truyền thống đoàn kết lâu đời và mỗi dân tộc đều có bản sắc văn hóa riêng góp phần làm phong phú nền văn hóa Việt Nam."
+    },
+    {
+      "instruction": "Trình bày quan điểm cơ bản của Đảng và Nhà nước Việt Nam về chính sách dân tộc.",
+      "input": "",
+      "output": "Quan điểm cơ bản là vấn đề dân tộc và đoàn kết dân tộc có vị trí chiến lược lâu dài; các dân tộc bình đẳng, đoàn kết, tôn trọng và giúp nhau cùng phát triển; phát triển toàn diện vùng dân tộc thiểu số và miền núi; ưu tiên đầu tư cho vùng còn khó khăn; công tác dân tộc là trách nhiệm của toàn bộ hệ thống chính trị."
+    },
+    {
+      "instruction": "Chính sách dân tộc của Việt Nam được thể hiện trên những lĩnh vực nào?",
+      "input": "",
+      "output": "Chính sách dân tộc của Việt Nam được thể hiện trên nhiều lĩnh vực như chính trị, kinh tế, văn hóa, xã hội, quốc phòng và an ninh. Mục tiêu là bảo đảm bình đẳng, đoàn kết, tôn trọng, giúp nhau cùng phát triển giữa các dân tộc."
+    },
+    {
+      "instruction": "Tôn giáo là gì theo quan điểm của chủ nghĩa Mác - Lênin?",
+      "input": "",
+      "output": "Theo quan điểm của chủ nghĩa Mác - Lênin, tôn giáo là một hình thái ý thức xã hội, phản ánh hư ảo hiện thực khách quan. Tôn giáo ra đời từ những hạn chế của con người trong nhận thức, từ sự bất lực trước tự nhiên, xã hội và từ nhu cầu tâm lý, tinh thần của con người."
+    },
+    {
+      "instruction": "Nêu các nguồn gốc của tôn giáo.",
+      "input": "",
+      "output": "Nguồn gốc của tôn giáo gồm: nguồn gốc tự nhiên, do con người bất lực trước các hiện tượng tự nhiên; nguồn gốc xã hội, do áp bức, bất công và khổ đau trong đời sống xã hội; nguồn gốc nhận thức, do hạn chế trong hiểu biết của con người; và nguồn gốc tâm lý, do nỗi sợ hãi, niềm tin, hy vọng và khát vọng được che chở."
+    },
+    {
+      "instruction": "Tôn giáo có những tính chất cơ bản nào?",
+      "input": "",
+      "output": "Tôn giáo có ba tính chất cơ bản: tính lịch sử, vì tôn giáo ra đời, tồn tại và biến đổi theo điều kiện lịch sử; tính quần chúng, vì có đông đảo người tin theo; và tính chính trị, vì trong những điều kiện nhất định tôn giáo có thể bị các lực lượng chính trị lợi dụng."
+    },
+    {
+      "instruction": "Nêu nguyên tắc giải quyết vấn đề tôn giáo trong thời kỳ quá độ lên chủ nghĩa xã hội.",
+      "input": "",
+      "output": "Các nguyên tắc gồm: tôn trọng quyền tự do tín ngưỡng, tôn giáo và quyền không tín ngưỡng, tôn giáo; khắc phục dần ảnh hưởng tiêu cực của tôn giáo gắn với xây dựng xã hội mới; phân biệt mặt tư tưởng và mặt chính trị trong tôn giáo; giải quyết vấn đề tôn giáo theo quan điểm lịch sử - cụ thể."
+    },
+    {
+      "instruction": "Vì sao cần phân biệt mặt tư tưởng và mặt chính trị trong vấn đề tôn giáo?",
+      "input": "",
+      "output": "Cần phân biệt mặt tư tưởng và mặt chính trị trong vấn đề tôn giáo để tránh đồng nhất niềm tin tôn giáo chính đáng của nhân dân với hành vi lợi dụng tôn giáo vì mục đích chính trị. Điều này giúp vừa tôn trọng quyền tự do tín ngưỡng, tôn giáo, vừa đấu tranh với các hoạt động lợi dụng tôn giáo để chống phá xã hội và Nhà nước."
+    },
+    {
+      "instruction": "Nêu đặc điểm tôn giáo ở Việt Nam.",
+      "input": "",
+      "output": "Tôn giáo ở Việt Nam có các đặc điểm: Việt Nam là quốc gia có nhiều tôn giáo; các tôn giáo đa dạng, đan xen và chung sống hòa bình; tín đồ phần lớn là nhân dân lao động có lòng yêu nước; chức sắc tôn giáo có uy tín, ảnh hưởng trong cộng đồng; các tôn giáo có quan hệ với tổ chức, cá nhân tôn giáo nước ngoài; và tôn giáo có thể bị các thế lực xấu lợi dụng."
+    },
+    {
+      "instruction": "Trình bày chính sách tôn giáo của Đảng và Nhà nước Việt Nam.",
+      "input": "",
+      "output": "Chính sách tôn giáo của Đảng và Nhà nước Việt Nam khẳng định tín ngưỡng, tôn giáo là nhu cầu tinh thần của một bộ phận nhân dân; đồng bào tôn giáo là bộ phận của khối đại đoàn kết toàn dân tộc; thực hiện đoàn kết lương - giáo; tôn trọng quyền tự do tín ngưỡng, tôn giáo; công tác tôn giáo là trách nhiệm của cả hệ thống chính trị; hoạt động tôn giáo phải tuân thủ pháp luật và không được lợi dụng tôn giáo để chống phá Nhà nước."
+    },
+    {
+      "instruction": "Phân tích mối quan hệ giữa dân tộc và tôn giáo ở Việt Nam.",
+      "input": "",
+      "output": "Ở Việt Nam, quan hệ dân tộc và tôn giáo có sự đan xen chặt chẽ do Việt Nam là quốc gia đa dân tộc, đa tôn giáo. Nhiều tôn giáo, tín ngưỡng gắn với văn hóa, phong tục và đời sống tinh thần của các cộng đồng dân tộc. Việc giải quyết tốt quan hệ dân tộc - tôn giáo góp phần củng cố khối đại đoàn kết toàn dân tộc, ổn định chính trị, phát triển xã hội và bảo vệ Tổ quốc."
+    },
+    {
+      "instruction": "Nêu đặc điểm quan hệ dân tộc và tôn giáo ở Việt Nam.",
+      "input": "",
+      "output": "Quan hệ dân tộc và tôn giáo ở Việt Nam có các đặc điểm: Việt Nam là quốc gia đa dân tộc, đa tôn giáo; quan hệ dân tộc - tôn giáo gắn với cộng đồng quốc gia thống nhất; tín ngưỡng truyền thống có ảnh hưởng mạnh trong đời sống văn hóa; một số hiện tượng tôn giáo mới có thể tác động đến xã hội và khối đại đoàn kết toàn dân tộc."
+    },
+    {
+      "instruction": "Nêu phương hướng giải quyết mối quan hệ dân tộc và tôn giáo ở Việt Nam hiện nay.",
+      "input": "",
+      "output": "Phương hướng cơ bản là tăng cường đoàn kết dân tộc và đoàn kết tôn giáo; bảo đảm quyền tự do tín ngưỡng, tôn giáo; phát huy giá trị văn hóa, đạo đức tốt đẹp của các tôn giáo; gắn giải quyết vấn đề dân tộc - tôn giáo với phát triển kinh tế, văn hóa, xã hội, quốc phòng - an ninh; đồng thời đấu tranh chống mọi hành vi lợi dụng dân tộc, tôn giáo để chia rẽ khối đại đoàn kết toàn dân tộc."
+    },
+    {
+      "instruction": "Vì sao phải đấu tranh chống hành vi lợi dụng dân tộc và tôn giáo?",
+      "input": "",
+      "output": "Phải đấu tranh chống hành vi lợi dụng dân tộc và tôn giáo vì các hành vi này có thể chia rẽ khối đại đoàn kết toàn dân tộc, gây mất ổn định chính trị - xã hội, xâm phạm quyền và lợi ích hợp pháp của nhân dân, ảnh hưởng đến quá trình xây dựng và bảo vệ Tổ quốc."
+    },
+    {
+      "id": "vn_ethnic_features_full",
+      "instruction": "Trình bày đầy đủ đặc điểm của các dân tộc ở Việt Nam.",
+      "input": "",
+      "output": "Việt Nam là quốc gia đa dân tộc với 54 dân tộc anh em cùng sinh sống, tạo nên sự phong phú và đa dạng về văn hóa. Các dân tộc ở Việt Nam có sự chênh lệch về số dân và trình độ phát triển; dân tộc Kinh chiếm đa số, trong khi nhiều dân tộc thiểu số có số dân ít và điều kiện phát triển kinh tế - xã hội còn khó khăn. Các dân tộc cư trú xen kẽ nhau trên nhiều địa bàn, tạo điều kiện giao lưu, đoàn kết và hỗ trợ lẫn nhau. Đồng bào dân tộc thiểu số chủ yếu sinh sống ở miền núi, biên giới, hải đảo, là những khu vực có vị trí quan trọng về quốc phòng, an ninh và bảo vệ chủ quyền quốc gia. Mỗi dân tộc có bản sắc văn hóa riêng như ngôn ngữ, phong tục, tập quán và truyền thống văn hóa, góp phần tạo nên nền văn hóa Việt Nam thống nhất trong đa dạng. Các dân tộc Việt Nam có truyền thống đoàn kết lâu đời trong quá trình dựng nước và giữ nước, tạo nên sức mạnh của dân tộc Việt Nam.",
+      "tags": [
+        "dan_toc",
+        "viet_nam",
+        "dac_diem"
+      ]
+    },
+    {
+      "id": "vn_54_ethnic_groups",
+      "instruction": "Vì sao nói Việt Nam là quốc gia đa dân tộc?",
+      "input": "",
+      "output": "Việt Nam được xem là quốc gia đa dân tộc vì có 54 dân tộc anh em cùng sinh sống trên lãnh thổ. Sự tồn tại của nhiều dân tộc tạo nên sự phong phú về ngôn ngữ, phong tục, tập quán, tín ngưỡng và bản sắc văn hóa, đồng thời góp phần hình thành nền văn hóa Việt Nam thống nhất trong đa dạng.",
+      "tags": [
+        "dan_toc",
+        "viet_nam",
+        "54_dan_toc"
+      ]
+    },
+    {
+      "id": "vn_ethnic_population_development_gap",
+      "instruction": "Sự chênh lệch về số dân và trình độ phát triển giữa các dân tộc ở Việt Nam được hiểu như thế nào?",
+      "input": "",
+      "output": "Sự chênh lệch về số dân và trình độ phát triển thể hiện ở việc dân tộc Kinh chiếm đa số, còn nhiều dân tộc thiểu số có số dân ít hơn và điều kiện phát triển kinh tế - xã hội còn khó khăn. Vì vậy, việc hỗ trợ, ưu tiên đầu tư cho vùng dân tộc thiểu số là cần thiết nhằm thu hẹp khoảng cách phát triển giữa các dân tộc.",
+      "tags": [
+        "dan_toc",
+        "chenh_lech",
+        "phat_trien"
+      ]
+    },
+    {
+      "id": "vn_ethnic_interspersed_residence",
+      "instruction": "Đặc điểm cư trú xen kẽ của các dân tộc ở Việt Nam có ý nghĩa gì?",
+      "input": "",
+      "output": "Các dân tộc ở Việt Nam không sống tách biệt hoàn toàn mà phân bố xen kẽ trên nhiều địa bàn. Đặc điểm này tạo điều kiện cho các dân tộc giao lưu văn hóa, tăng cường đoàn kết, hỗ trợ nhau trong đời sống và cùng tham gia xây dựng, bảo vệ đất nước.",
+      "tags": [
+        "dan_toc",
+        "cu_tru_xen_ke",
+        "doan_ket"
+      ]
+    },
+    {
+      "id": "vn_ethnic_strategic_areas",
+      "instruction": "Vì sao vùng đồng bào dân tộc thiểu số có vị trí chiến lược quan trọng?",
+      "input": "",
+      "output": "Đồng bào dân tộc thiểu số chủ yếu sinh sống ở miền núi, biên giới, hải đảo và những địa bàn có vị trí quan trọng về quốc phòng, an ninh, môi trường sinh thái và bảo vệ chủ quyền quốc gia. Do đó, phát triển vùng dân tộc thiểu số không chỉ có ý nghĩa kinh tế - xã hội mà còn gắn với nhiệm vụ giữ vững ổn định chính trị, quốc phòng và an ninh.",
+      "tags": [
+        "dan_toc",
+        "dia_ban_chien_luoc",
+        "quoc_phong_an_ninh"
+      ]
+    },
+    {
+      "id": "vn_ethnic_cultural_identity",
+      "instruction": "Mỗi dân tộc ở Việt Nam có bản sắc văn hóa riêng được thể hiện như thế nào?",
+      "input": "",
+      "output": "Mỗi dân tộc ở Việt Nam có bản sắc văn hóa riêng thể hiện qua ngôn ngữ, phong tục, tập quán, lễ hội, tín ngưỡng, trang phục, nghệ thuật và truyền thống sinh hoạt cộng đồng. Những giá trị này góp phần làm cho nền văn hóa Việt Nam trở nên phong phú, đa dạng nhưng vẫn thống nhất trong cộng đồng quốc gia - dân tộc Việt Nam.",
+      "tags": [
+        "dan_toc",
+        "ban_sac_van_hoa",
+        "van_hoa"
+      ]
+    },
+    {
+      "id": "vn_ethnic_unity_tradition",
+      "instruction": "Truyền thống đoàn kết lâu đời của các dân tộc Việt Nam có vai trò gì?",
+      "input": "",
+      "output": "Truyền thống đoàn kết lâu đời giúp các dân tộc Việt Nam gắn bó với nhau trong quá trình dựng nước và giữ nước. Đây là cơ sở tạo nên sức mạnh của khối đại đoàn kết toàn dân tộc, giúp đất nước vượt qua khó khăn, chống ngoại xâm, bảo vệ độc lập dân tộc và xây dựng xã hội phát triển.",
+      "tags": [
+        "dan_toc",
+        "doan_ket",
+        "truyen_thong"
+      ]
+    },
+    {
+      "id": "party_view_ethnic_issue",
+      "instruction": "Trình bày quan điểm của Đảng về vấn đề dân tộc.",
+      "input": "",
+      "output": "Đảng xác định vấn đề dân tộc và đoàn kết dân tộc có vị trí chiến lược lâu dài trong sự nghiệp xây dựng và bảo vệ Tổ quốc. Các dân tộc phải được bình đẳng, đoàn kết, tôn trọng và giúp đỡ nhau cùng phát triển. Đảng kiên quyết đấu tranh chống mọi âm mưu lợi dụng vấn đề dân tộc để chia rẽ khối đại đoàn kết toàn dân tộc, gây mất ổn định chính trị và phá hoại đất nước. Việc giải quyết vấn đề dân tộc phải gắn phát triển kinh tế với văn hóa, giáo dục, y tế, quốc phòng và an ninh, đặc biệt ở vùng dân tộc thiểu số và miền núi.",
+      "tags": [
+        "chinh_sach_dan_toc",
+        "dang",
+        "quan_diem"
+      ]
+    },
+    {
+      "id": "party_view_ethnic_strategy",
+      "instruction": "Vì sao Đảng xác định vấn đề dân tộc có vị trí chiến lược lâu dài?",
+      "input": "",
+      "output": "Đảng xác định vấn đề dân tộc có vị trí chiến lược lâu dài vì đoàn kết dân tộc là nền tảng quan trọng trong sự nghiệp xây dựng và bảo vệ Tổ quốc. Giải quyết tốt vấn đề dân tộc góp phần củng cố khối đại đoàn kết toàn dân tộc, phát triển kinh tế - xã hội, giữ vững quốc phòng, an ninh và ổn định chính trị.",
+      "tags": [
+        "chinh_sach_dan_toc",
+        "chien_luoc",
+        "dang"
+      ]
+    },
+    {
+      "id": "party_view_ethnic_equality_unity",
+      "instruction": "Quan điểm bình đẳng, đoàn kết giữa các dân tộc của Đảng được hiểu như thế nào?",
+      "input": "",
+      "output": "Quan điểm bình đẳng, đoàn kết giữa các dân tộc có nghĩa là mọi dân tộc đều có quyền và nghĩa vụ như nhau trong đời sống xã hội; không dân tộc nào bị phân biệt đối xử. Các dân tộc cần tôn trọng, giúp đỡ nhau cùng phát triển, cùng xây dựng khối đại đoàn kết toàn dân tộc.",
+      "tags": [
+        "chinh_sach_dan_toc",
+        "binh_dang",
+        "doan_ket"
+      ]
+    },
+    {
+      "id": "party_view_against_ethnic_division",
+      "instruction": "Vì sao phải chống mọi âm mưu chia rẽ dân tộc?",
+      "input": "",
+      "output": "Phải chống mọi âm mưu chia rẽ dân tộc vì các thế lực xấu có thể lợi dụng vấn đề dân tộc để gây mất đoàn kết, làm suy yếu khối đại đoàn kết toàn dân tộc, gây bất ổn xã hội và phá hoại sự nghiệp xây dựng, bảo vệ đất nước. Đấu tranh chống chia rẽ dân tộc góp phần giữ vững ổn định chính trị, quốc phòng, an ninh và chủ quyền quốc gia.",
+      "tags": [
+        "chinh_sach_dan_toc",
+        "chong_chia_re",
+        "an_ninh"
+      ]
+    },
+    {
+      "id": "state_ethnic_policy_full",
+      "instruction": "Trình bày chính sách dân tộc của Nhà nước Việt Nam.",
+      "input": "",
+      "output": "Chính sách dân tộc của Nhà nước Việt Nam gồm bảo đảm quyền bình đẳng giữa các dân tộc trong đời sống chính trị, kinh tế, văn hóa và xã hội; ưu tiên phát triển kinh tế vùng dân tộc thiểu số thông qua các chương trình xóa đói giảm nghèo, xây dựng cơ sở hạ tầng và nâng cao đời sống nhân dân; giữ gìn và phát huy bản sắc văn hóa của từng dân tộc; nâng cao dân trí, phát triển giáo dục, y tế, đào tạo cán bộ người dân tộc thiểu số; đồng thời giữ vững quốc phòng, an ninh, bảo vệ chủ quyền quốc gia và ổn định chính trị - xã hội.",
+      "tags": [
+        "chinh_sach_dan_toc",
+        "nha_nuoc",
+        "viet_nam"
+      ]
+    },
+    {
+      "id": "state_ethnic_policy_equality",
+      "instruction": "Chính sách bảo đảm quyền bình đẳng giữa các dân tộc của Nhà nước Việt Nam được thể hiện như thế nào?",
+      "input": "",
+      "output": "Chính sách bảo đảm quyền bình đẳng giữa các dân tộc được thể hiện ở việc mọi dân tộc đều có quyền và nghĩa vụ như nhau trong đời sống chính trị, kinh tế, văn hóa và xã hội. Nhà nước tôn trọng quyền của các dân tộc, chống phân biệt đối xử và tạo điều kiện để các dân tộc cùng tham gia vào quá trình phát triển đất nước.",
+      "tags": [
+        "chinh_sach_dan_toc",
+        "binh_dang",
+        "nha_nuoc"
+      ]
+    },
+    {
+      "id": "state_ethnic_policy_economic_priority",
+      "instruction": "Nhà nước Việt Nam ưu tiên phát triển kinh tế vùng dân tộc thiểu số như thế nào?",
+      "input": "",
+      "output": "Nhà nước ưu tiên phát triển kinh tế vùng dân tộc thiểu số thông qua các chương trình hỗ trợ xóa đói giảm nghèo, đầu tư xây dựng cơ sở hạ tầng, phát triển sản xuất, nâng cao đời sống vật chất và tinh thần của nhân dân. Mục tiêu là thu hẹp khoảng cách phát triển giữa các vùng, các dân tộc và tạo điều kiện để đồng bào dân tộc thiểu số phát triển bền vững.",
+      "tags": [
+        "chinh_sach_dan_toc",
+        "phat_trien_kinh_te",
+        "dan_toc_thieu_so"
+      ]
+    },
+    {
+      "id": "state_ethnic_policy_culture_education_health",
+      "instruction": "Chính sách dân tộc của Nhà nước Việt Nam về văn hóa, giáo dục và y tế gồm những nội dung gì?",
+      "input": "",
+      "output": "Về văn hóa, Nhà nước tôn trọng, bảo tồn và phát huy bản sắc văn hóa truyền thống của từng dân tộc. Về giáo dục, Nhà nước chú trọng nâng cao dân trí, mở rộng cơ hội học tập và đào tạo cán bộ là người dân tộc thiểu số. Về y tế, Nhà nước chăm lo sức khỏe nhân dân, nâng cao chất lượng đời sống và bảo đảm các điều kiện an sinh xã hội cho vùng dân tộc thiểu số.",
+      "tags": [
+        "chinh_sach_dan_toc",
+        "van_hoa",
+        "giao_duc",
+        "y_te"
+      ]
+    },
+    {
+      "id": "state_ethnic_policy_security_defense",
+      "instruction": "Chính sách dân tộc gắn với quốc phòng và an ninh như thế nào?",
+      "input": "",
+      "output": "Chính sách dân tộc gắn với quốc phòng và an ninh thông qua việc xây dựng khối đại đoàn kết dân tộc, phát triển vùng dân tộc thiểu số, ổn định đời sống nhân dân, giữ vững chủ quyền quốc gia và ổn định chính trị - xã hội. Đặc biệt, nhiều vùng dân tộc thiểu số nằm ở miền núi, biên giới, hải đảo nên có vị trí quan trọng trong bảo vệ Tổ quốc.",
+      "tags": [
+        "chinh_sach_dan_toc",
+        "quoc_phong",
+        "an_ninh"
+      ]
+    },
+    {
+      "id": "compare_party_view_state_policy_ethnic",
+      "instruction": "Phân biệt quan điểm của Đảng và chính sách của Nhà nước Việt Nam về vấn đề dân tộc.",
+      "input": "",
+      "output": "Quan điểm của Đảng là định hướng chính trị, tư tưởng và đường lối chung về vấn đề dân tộc, nhấn mạnh vị trí chiến lược của đoàn kết dân tộc, nguyên tắc bình đẳng, đoàn kết, tôn trọng, giúp nhau cùng phát triển và đấu tranh chống chia rẽ dân tộc. Chính sách của Nhà nước là sự cụ thể hóa quan điểm đó thành các chương trình, quy định và hoạt động thực tiễn như bảo đảm quyền bình đẳng, ưu tiên phát triển kinh tế vùng dân tộc thiểu số, giữ gìn bản sắc văn hóa, nâng cao giáo dục - y tế và bảo đảm quốc phòng, an ninh.",
+      "tags": [
+        "chinh_sach_dan_toc",
+        "dang",
+        "nha_nuoc",
+        "phan_biet"
+      ]
+    }
+  ],
+  "updated_at": "2026-05-31T13:34:09Z",
+  "record_count": 41,
+  "notes": [
+    "Updated with additional team-written content about characteristics of ethnic groups in Vietnam and Party/State ethnic policy."
+  ]
+}

@@ -7,6 +7,30 @@ const DATASET_FILE = "chuong_6_dan_toc_ton_giao_dataset.json";
 
 let cachedDataset: DatasetRecord[] | null = null;
 
+type DatasetFile =
+  | DatasetRecord[]
+  | {
+      records: DatasetRecord[];
+    };
+
+function normalizeRecord(raw: DatasetRecord): DatasetRecord {
+  return {
+    id: raw.id,
+    instruction: raw.instruction?.trim() ?? "",
+    input: raw.input?.trim() || undefined,
+    output: raw.output?.trim() ?? "",
+    tags: raw.tags,
+  };
+}
+
+function recordSearchText(record: DatasetRecord): string {
+  const parts = [record.instruction, record.input ?? "", record.output];
+  if (record.tags?.length) {
+    parts.push(record.tags.join(" "));
+  }
+  return parts.join(" ");
+}
+
 /** Load dataset JSON từ file */
 export async function loadDataset(): Promise<DatasetRecord[]> {
   if (cachedDataset) {
@@ -15,9 +39,13 @@ export async function loadDataset(): Promise<DatasetRecord[]> {
 
   const filePath = getDataFilePath(DATASET_FILE);
   const raw = await fs.readFile(filePath, "utf-8");
-  const data = JSON.parse(raw) as DatasetRecord[] | { records: DatasetRecord[] };
+  const data = JSON.parse(raw) as DatasetFile;
 
-  cachedDataset = Array.isArray(data) ? data : data.records;
+  const records = Array.isArray(data) ? data : data.records;
+  cachedDataset = records
+    .map(normalizeRecord)
+    .filter((r) => r.instruction && r.output);
+
   return cachedDataset;
 }
 
@@ -34,11 +62,12 @@ export async function findRelevantRecords(
   }
 
   const scored = dataset.map((record) => {
+    const text = recordSearchText(record);
+    const totalScore = countKeywordMatches(text, keywords);
     const instructionScore = countKeywordMatches(record.instruction, keywords);
-    const outputScore = countKeywordMatches(record.output, keywords);
     return {
       record,
-      score: instructionScore * 2 + outputScore,
+      score: totalScore + instructionScore,
     };
   });
 
@@ -56,9 +85,11 @@ export async function findRelevantRecords(
 /** Format context từ các record cho prompt */
 export function formatRecordsAsContext(records: DatasetRecord[]): string {
   return records
-    .map(
-      (r, i) =>
-        `[${i + 1}] Câu hỏi mẫu: ${r.instruction}\nTrả lời: ${r.output}`
-    )
+    .map((r, i) => {
+      const question = r.input
+        ? `${r.instruction}\n(Bổ sung: ${r.input})`
+        : r.instruction;
+      return `[${i + 1}] Câu hỏi mẫu: ${question}\nTrả lời: ${r.output}`;
+    })
     .join("\n\n");
 }

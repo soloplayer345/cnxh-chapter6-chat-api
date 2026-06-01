@@ -6,6 +6,7 @@ Thư mục này chứa tài liệu bổ sung cho đồ án/báo cáo, **không**
 
 | File | Mục đích |
 |------|----------|
+| [API-FRONTEND.md](./API-FRONTEND.md) | **Tài liệu tích hợp API cho team Frontend** |
 | [phu-luc-log-ai.md](./phu-luc-log-ai.md) | Nhật ký các bước phát triển có hỗ trợ AI (Cursor Agent) |
 
 ## Cách trích dẫn trong báo cáo
