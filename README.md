@@ -193,20 +193,63 @@ Dùng khi không thuê VPS nhưng muốn bạn bè/lớp truy cập từ xa (4G,
 2. Đã cài ngrok: https://ngrok.com/download (hoặc `winget install Ngrok.Ngrok`).
 3. Ngrok agent **≥ 3.20** (bản cũ sẽ báo lỗi khi đăng nhập).
 
-### Các bước
+### Mở ngrok bằng tay (từng bước)
+
+**Bước 1 — Bật API trước** (cửa sổ PowerShell thứ nhất, để chạy nền):
 
 ```powershell
-# Lần đầu: đăng ký ngrok, lấy authtoken tại https://dashboard.ngrok.com/get-started/your-authtoken
-ngrok config add-authtoken <TOKEN>
+cd c:\code\thePrototype\cnxh-chapter6-chat-api
+docker compose up -d
+# hoặc: bun run dev
+```
 
+Mở trình duyệt: http://localhost:5000/health — phải thấy `"success":true`. Nếu chưa OK thì **chưa** chạy ngrok.
+
+**Bước 2 — Lần đầu cài ngrok** (chỉ làm một lần):
+
+1. Đăng ký: https://ngrok.com  
+2. Lấy token: https://dashboard.ngrok.com/get-started/your-authtoken  
+3. Trong PowerShell:
+
+```powershell
+& "$env:LOCALAPPDATA\Microsoft\WinGet\Links\ngrok.exe" config add-authtoken <DÁN_TOKEN_VÀO_ĐÂY>
+```
+
+**Bước 3 — Mở tunnel** (cửa sổ PowerShell **thứ hai**, giữ cửa sổ này **mở** — tắt là mất link):
+
+```powershell
+& "$env:LOCALAPPDATA\Microsoft\WinGet\Links\ngrok.exe" http 5000
+```
+
+Màn hình sẽ hiện dòng **Forwarding**, ví dụ:
+
+```text
+Forwarding   https://abc-xyz.ngrok-free.dev -> http://localhost:5000
+```
+
+**Bước 4 — Lấy link chia sẻ**
+
+- Copy URL `https://....ngrok-free.dev` ở dòng Forwarding  
+- Gửi cho bạn bè: `https://....ngrok-free.dev/api-docs`  
+- Hoặc mở http://127.0.0.1:4040 trên máy bạn để xem tunnel
+
+**Bước 5 — Dừng ngrok**
+
+Trong cửa sổ đang chạy ngrok: nhấn `Ctrl + C`.
+
+---
+
+### Lệnh ngắn (đã cài token rồi)
+
+```powershell
 # Cập nhật ngrok nếu báo "agent version too old"
 ngrok update
 
-# Mở tunnel (chỉ sau khi API đã health OK)
+# Mở tunnel (API phải đang chạy port 5000)
 ngrok http 5000
 ```
 
-**Trên Windows**, nếu gõ `ngrok` báo *not recognized*, dùng đường dẫn đầy đủ (hoặc mở terminal mới sau khi cài winget):
+**Trên Windows**, nếu gõ `ngrok` báo *not recognized*, luôn dùng:
 
 ```powershell
 & "$env:LOCALAPPDATA\Microsoft\WinGet\Links\ngrok.exe" http 5000
@@ -364,7 +407,54 @@ Nếu vẫn lỗi trên máy clone cũ: mở `docker/entrypoint.sh` bằng VS Co
 
 **Thứ tự đúng:** Docker/API health OK → rồi mới `ngrok http 5000`.
 
-### Chat trả 503 hoặc treo rất lân (>2 phút) rồi timeout
+### Web FE deploy (Vercel, Netlify, …) không gọi được API ngrok
+
+**Triệu chứng:** Trang web đã deploy báo lỗi mạng / CORS / `Failed to fetch` / JSON parse error (`Unexpected token '<'`).
+
+**3 nguyên nhân hay gặp nhất:**
+
+| # | Nguyên nhân | Cách sửa |
+|---|-------------|----------|
+| 1 | FE vẫn trỏ `localhost:5000` | Trên Vercel/Netlify set **`VITE_API_URL=https://xxxx.ngrok-free.dev`** rồi **build lại** (biến `VITE_*` gắn lúc build, không đổi sau deploy) |
+| 2 | Thiếu header ngrok | Mọi request từ trình duyệt phải có header **`ngrok-skip-browser-warning: true`** (xem [doc/API-FRONTEND.md](./doc/API-FRONTEND.md)) |
+| 3 | API/ngrok trên máy bạn tắt | Máy chạy Docker + ngrok phải **bật**; URL ngrok đổi mỗi lần mở → cập nhật env FE và build lại |
+
+**Kiểm tra nhanh trên máy có API:**
+
+1. Mở https://xxxx.ngrok-free.dev/health trên trình duyệt → thấy JSON OK.
+2. Trên trang web deploy, F12 → Console, chạy:
+
+```javascript
+fetch("https://XXXX.ngrok-free.dev/health", {
+  headers: { "ngrok-skip-browser-warning": "true" },
+})
+  .then((r) => r.json())
+  .then(console.log)
+  .catch(console.error);
+```
+
+Nếu lệnh trên **OK** mà app vẫn lỗi → FE chưa cấu hình `VITE_API_URL` / header đúng.
+
+**Code mẫu FE (bắt buộc khi dùng ngrok):**
+
+```typescript
+const API_BASE = import.meta.env.VITE_API_URL; // https://xxx.ngrok-free.dev
+
+fetch(`${API_BASE}/api/ai/chat`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "ngrok-skip-browser-warning": "true",
+  },
+  body: JSON.stringify({ message: "Xin chào" }),
+});
+```
+
+**Sau khi sửa API (CORS):** `git pull` + `docker compose up -d --build` trên máy chạy backend.
+
+**Cách khác (tránh CORS):** FE và API cùng WiFi → FE gọi `http://192.168.x.x:5000` (mục LAN), không qua ngrok.
+
+---
 
 **Nguyên nhân thường gặp với model `qwen3.5:0.8b`:** Bật chế độ *thinking* mặc định → Ollama xử lý cực chậm trên CPU.
 

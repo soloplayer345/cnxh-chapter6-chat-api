@@ -31,9 +31,30 @@ Trình duyệt có thể hiện trang cảnh báo. Khi gọi API bằng `fetch` 
 ngrok-skip-browser-warning: true
 ```
 
----
+### FE deploy (Vercel / Netlify) + API ngrok
 
-## 2. Luồng tích hợp FE (khuyến nghị)
+| Bước | Việc cần làm |
+|------|----------------|
+| 1 | Máy backend: Docker + `ngrok http 5000` **luôn bật** khi demo |
+| 2 | Set `VITE_API_URL=https://xxx.ngrok-free.dev` trên host FE, **build lại** |
+| 3 | Mọi `fetch`/axios thêm header `ngrok-skip-browser-warning: true` |
+| 4 | Đổi URL ngrok → cập nhật env + **redeploy FE** |
+
+Test trên trang deploy (F12 → Console):
+
+```javascript
+fetch("https://YOUR-NGROK.ngrok-free.dev/health", {
+  headers: { "ngrok-skip-browser-warning": "true" },
+}).then((r) => r.json()).then(console.log);
+```
+
+| Lỗi | Sửa |
+|-----|-----|
+| `Failed to fetch` / CORS | Header ngrok + API đang chạy |
+| `Unexpected token '<'` | Thiếu header → ngrok trả HTML |
+| Vẫn gọi `localhost` | Sai `VITE_API_URL`, build lại |
+
+---
 
 ```mermaid
 sequenceDiagram

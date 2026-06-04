@@ -8,7 +8,19 @@ import { openApiSpec, swaggerServe, swaggerUiHandler } from "./config/swagger";
 
 const app = express();
 
-app.use(cors());
+/** CORS mở cho FE deploy (Vercel, Netlify, …) gọi API qua ngrok */
+app.use(
+  cors({
+    origin: true,
+    methods: ["GET", "POST", "DELETE", "OPTIONS"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "ngrok-skip-browser-warning",
+    ],
+    optionsSuccessStatus: 204,
+  })
+);
 app.use(express.json());
 
 app.use("/api-docs", swaggerServe, swaggerUiHandler);
