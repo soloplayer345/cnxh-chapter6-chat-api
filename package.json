@@ -9,7 +9,11 @@
     "start": "node dist/server.js",
     "docker:up": "docker compose up -d --build",
     "docker:down": "docker compose down",
-    "docker:logs": "docker compose logs -f api"
+    "docker:logs": "docker compose logs -f api",
+    "docker:ngrok": "docker compose --profile ngrok up -d",
+    "ngrok": "powershell -ExecutionPolicy Bypass -File scripts/start-ngrok.ps1",
+    "ngrok:stop": "powershell -ExecutionPolicy Bypass -File scripts/stop-ngrok.ps1",
+    "ngrok:setup": "powershell -ExecutionPolicy Bypass -File scripts/setup-ngrok.ps1"
   },
   "keywords": ["chatbot", "ollama", "express"],
   "license": "MIT",
